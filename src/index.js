@@ -1,3 +1,5 @@
+import "./style/index.scss"
+
 const newConst = {
     a: 1,
     b: 2,
