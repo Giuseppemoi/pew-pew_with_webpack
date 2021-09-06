@@ -7,3 +7,4 @@ const newConst = {
 };
 
 console.log(newConst);
+
