@@ -1,10 +1,9 @@
-import "./style/index.scss"
+import "./assets/style/index.scss";
+import * as images from "./assets/js/img.js";
+import * as canvas from "./assets/js/canvas.js";
 
-const newConst = {
-    a: 1,
-    b: 2,
-    c: 3,
-};
+images.generateBonusesImage();
+images.generateBonusesHeart();
+canvas.canvas();
 
-console.log(newConst);
-
+// console.log(window)

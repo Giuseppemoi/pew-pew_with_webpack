@@ -3,21 +3,16 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-let mode = "development";
-let target = "web";
-
-if (process.env.NODE_ENV === "production") {
-    mode = "production";
-    target = "browserslist";
-}
+const mode = process.env.NODE_ENV || "development";
+const target = process.env.NODE_ENV === "production" ? "browserslist" : "web";
 
 module.exports = {
     mode: mode,
-    target: target,
 
     output: {
         path: path.resolve(__dirname, "dist"),
-        assetModuleFilename: "images/[hash][ext][query]",
+        filename: "assets/js/pew-pew.[contenthash:9].js",
+        assetModuleFilename: "assets/images/[name].[contenthash:9][ext][query]"
     },
 
     module: {
@@ -27,11 +22,11 @@ module.exports = {
                 type: "asset",
             },
             {
-                test: /\.scss$/i,
+                test: /\.(s)css$/i,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
-                        options: { publicPath: ""}
+                        options: { publicPath: "" },
                     },
                     "css-loader",
                     "postcss-loader",
@@ -50,11 +45,16 @@ module.exports = {
 
     plugins: [
         new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'assets/css/style.[contenthash:9].css'
+        }),
         new HtmlWebpackPlugin({
             template: "./src/index.html",
+            scriptLoading: "blocking",
         }),
     ],
+
+    target: target,
 
     devtool: "source-map",
 

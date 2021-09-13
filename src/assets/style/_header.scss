@@ -1,0 +1,33 @@
+header {
+  display: flex;
+  height: 13.5vh;
+  .control, .title, .options {
+    height: 100%;
+    width: 33vw;
+  }
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-size: 5vh;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    button {
+      height: 5vh;
+      margin: .875vh 0;
+      font-size: 3vh;
+    }
+  }
+  .control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    font-size: 2vh;
+  }
+}

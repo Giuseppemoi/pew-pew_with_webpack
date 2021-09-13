@@ -1,0 +1,12 @@
+section {
+  height: 15vh;
+  display: flex;
+  .btnStart, .btnReset, .timer, .targetHit, .life, .bonus {
+    width: (100vw / 6);
+  }
+  .bonus {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
