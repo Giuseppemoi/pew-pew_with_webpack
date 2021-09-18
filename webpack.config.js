@@ -9,6 +9,8 @@ const target = process.env.NODE_ENV === "production" ? "browserslist" : "web";
 module.exports = {
     mode: mode,
 
+    entry: "./src/assets/js/mainScript.js",
+
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "assets/js/pew-pew.[contenthash:9].js",
