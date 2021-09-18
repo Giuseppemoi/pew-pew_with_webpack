@@ -1,4 +1,4 @@
-import {canvasDom} from "./_canvas";
+import {canvasDom, ctxDom} from "./_canvas";
 import {allImg} from "./_allImg";
 
 export let xShip = canvasDom.width/2;
@@ -11,3 +11,6 @@ export function getXShip() {
     }
 }
 
+export function drawShip() {
+    ctxDom.drawImage(allImg.ship, xShip, yShip)
+}
