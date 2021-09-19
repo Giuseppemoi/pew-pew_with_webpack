@@ -2,23 +2,24 @@ import {canvasDom, ctxDom} from "./_canvas";
 import {allImg} from "./_img";
 
 let bonusesStartingPoint = -100
-let bonusPosition
 
-export let allRandomPosition = {
+export let allBonusesRandomPosition = {
     heart: randomXY(allImg.heart),
     triple: randomXY(allImg.triple),
     shield: randomXY(allImg.shield),
     cleaner: randomXY(allImg.cleaner)
 }
 
-export function randomXY(bonusImg) {
-    return bonusPosition = {
-        x: Math.floor(Math.random() * (canvasDom.width - bonusImg.width)),
-        y: Math.floor(Math.random() * bonusesStartingPoint) - bonusImg.height
+export function randomXY(img) {
+    return {
+        x: Math.floor(Math.random() * (canvasDom.width - img.width)),
+        y: Math.floor(Math.random() * bonusesStartingPoint) - img.height
     }
 }
 
-export function drawBonus(bonusImg, randomPosition) {
-    ctxDom.drawImage(bonusImg, randomPosition.x, randomPosition.y)
-    randomPosition.y++
+export function drawBonuses() {
+    for (let bonusPosition in allBonusesRandomPosition) {
+        ctxDom.drawImage(allImg[bonusPosition], allBonusesRandomPosition[bonusPosition].x, allBonusesRandomPosition[bonusPosition].y)
+        allBonusesRandomPosition[bonusPosition].y++
+    }
 }
