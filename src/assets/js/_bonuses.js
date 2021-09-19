@@ -1,18 +1,24 @@
-import {ctxDom} from "./_canvas";
-import {allImg} from "./_allImg";
+import {canvasDom, ctxDom} from "./_canvas";
+import {allImg} from "./_img";
 
-export function drawHeart() {
-    ctxDom.drawImage(allImg.heart, 100, 100)
+let bonusesStartingPoint = -100
+let bonusPosition
+
+export let allRandomPosition = {
+    heart: randomXY(allImg.heart),
+    triple: randomXY(allImg.triple),
+    shield: randomXY(allImg.shield),
+    cleaner: randomXY(allImg.cleaner)
 }
 
-export function drawTriple() {
-    ctxDom.drawImage(allImg.triple, 200, 200)
+export function randomXY(bonusImg) {
+    return bonusPosition = {
+        x: Math.floor(Math.random() * (canvasDom.width - bonusImg.width)),
+        y: Math.floor(Math.random() * bonusesStartingPoint) - bonusImg.height
+    }
 }
 
-export function drawShield() {
-    ctxDom.drawImage(allImg.shield, 300, 300)
-}
-
-export function drawCleaner() {
-    ctxDom.drawImage(allImg.cleaner, 400, 400)
+export function drawBonus(bonusImg, randomPosition) {
+    ctxDom.drawImage(bonusImg, randomPosition.x, randomPosition.y)
+    randomPosition.y++
 }

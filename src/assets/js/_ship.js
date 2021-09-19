@@ -1,5 +1,5 @@
 import {canvasDom, ctxDom} from "./_canvas";
-import {allImg} from "./_allImg";
+import {allImg} from "./_img";
 
 export let xShip = canvasDom.width/2;
 let shipHeight = allImg.ship.height || 56;

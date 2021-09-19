@@ -1,14 +1,14 @@
 import {play} from "./_draw";
 import {xShip, yShip} from "./_ship";
 import {ctxDom} from "./_canvas";
-import {allImg} from "./_allImg";
+import {allImg} from "./_img";
 
 export let arrayProjectile = [];
 let projectileSpeed = 10;
 let projectileWidth = 5
 let projectileHeight = 20
 
-export function saveCoordProjectile() {
+export function savePositionProjectile() {
     if (event.button === 0) {
         if (play) {
             if (event.target.id === "game") {
