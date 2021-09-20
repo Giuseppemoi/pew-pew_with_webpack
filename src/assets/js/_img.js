@@ -7,6 +7,7 @@ import heartImg from "../images/heart.png";
 import tripleImg from "../images/tripleBiger.png";
 import shieldImg from "../images/shieldBiger.png";
 import cleanerImg from "../images/cleanerBiger.png";
+import projectile from "../images/projectile.png";
 
 export let allImg = {
     ship: newImg(shipImg),
@@ -14,7 +15,8 @@ export let allImg = {
     heart: newImg(heartImg),
     triple: newImg(tripleImg),
     shield: newImg(shieldImg),
-    cleaner: newImg(cleanerImg)
+    cleaner: newImg(cleanerImg),
+    projectile: newImg(projectile)
 }
 
 export function generateBonusesImage() {

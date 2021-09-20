@@ -1,32 +1,25 @@
 import {play} from "./_draw";
-import {xShip, yShip} from "./_ship";
+import {ship} from "./_ship";
 import {ctxDom} from "./_canvas";
 import {allImg} from "./_img";
 
-export let arrayProjectile = [];
+export let allProjectiles = {};
 let projectileSpeed = 10;
-let projectileWidth = 5
-let projectileHeight = 20
 
 export function savePositionProjectile() {
     if (event.button === 0) {
         if (play) {
             if (event.target.id === "game") {
-                arrayProjectile.push([xShip, yShip]);
+                let date = new Date();
+                allProjectiles[date.getTime()] = {x: ship.ship1.x, y: ship.ship1.y}
             }
         }
     }
 }
 
-export function drawProjectile() {
-    if (arrayProjectile.length > 0) {
-        arrayProjectile.forEach(projectile => {
-            ctxDom.beginPath();
-            ctxDom.rect(projectile[0] + (allImg.ship.width / 2) - (projectileWidth / 2), projectile[1], projectileWidth, projectileHeight);
-            ctxDom.fillStyle = "#82fe23";
-            ctxDom.fill();
-            ctxDom.closePath();
-            projectile[1] = projectile[1] - projectileSpeed;
-        })
+export function drawProjectiles() {
+    for (let projectile in allProjectiles) {
+        ctxDom.drawImage(allImg.projectile, allProjectiles[projectile].x + (allImg.ship.width / 2) - (allImg.projectile.width / 2), allProjectiles[projectile].y)
+        allProjectiles[projectile].y -= projectileSpeed
     }
 }

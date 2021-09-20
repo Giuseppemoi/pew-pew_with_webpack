@@ -3,7 +3,7 @@ import {allImg} from "./_img";
 
 let bonusesStartingPoint = -100
 
-export let allBonusesRandomPosition = {
+export let allBonuses = {
     heart: randomXY(allImg.heart),
     triple: randomXY(allImg.triple),
     shield: randomXY(allImg.shield),
@@ -18,8 +18,8 @@ export function randomXY(img) {
 }
 
 export function drawBonuses() {
-    for (let bonusPosition in allBonusesRandomPosition) {
-        ctxDom.drawImage(allImg[bonusPosition], allBonusesRandomPosition[bonusPosition].x, allBonusesRandomPosition[bonusPosition].y)
-        allBonusesRandomPosition[bonusPosition].y++
+    for (let bonusPosition in allBonuses) {
+        ctxDom.drawImage(allImg[bonusPosition], allBonuses[bonusPosition].x, allBonuses[bonusPosition].y)
+        allBonuses[bonusPosition].y++
     }
 }

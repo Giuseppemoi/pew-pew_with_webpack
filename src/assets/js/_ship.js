@@ -1,16 +1,15 @@
 import {canvasDom, ctxDom} from "./_canvas";
 import {allImg} from "./_img";
 
-export let xShip = canvasDom.width/2;
 let shipHeight = allImg.ship.height || 56;
-export let yShip = canvasDom.height - shipHeight;
+export let ship = {ship1: {x: canvasDom.width/2, y: canvasDom.height - shipHeight}}
 
 export function getXShip() {
     if (event.target.id === "game") {
-        xShip = event.clientX-30
+        ship.ship1.x = event.clientX-30
     }
 }
 
 export function drawShip() {
-    ctxDom.drawImage(allImg.ship, xShip, yShip)
+    ctxDom.drawImage(allImg.ship, ship.ship1.x, ship.ship1.y)
 }
