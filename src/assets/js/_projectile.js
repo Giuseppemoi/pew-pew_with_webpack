@@ -1,17 +1,17 @@
 import {play} from "./_draw";
-import {ship} from "./_ship";
+import {allShip} from "./_ship";
 import {ctxDom} from "./_canvas";
 import {allImg} from "./_img";
 
 export let allProjectiles = {};
-let projectileSpeed = 10;
+let projectileSpeed = 5;
 
 export function savePositionProjectile() {
     if (event.button === 0) {
         if (play) {
             if (event.target.id === "game") {
                 let date = new Date();
-                allProjectiles[date.getTime()] = {x: ship.ship1.x, y: ship.ship1.y}
+                allProjectiles[date.getTime()] = {x: allShip.ship1.x, y: allShip.ship1.y}
             }
         }
     }

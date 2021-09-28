@@ -1,15 +1,14 @@
 import {clearCanvas} from "./_canvas";
-import {drawShip, ship} from "./_ship";
-import {allTargets, drawTargets} from "./_target";
-import {allProjectiles, drawProjectiles} from "./_projectile";
-import {allBonuses, drawBonuses} from "./_bonuses";
+import {drawShip} from "./_ship";
+import {drawTargets} from "./_target";
+import {drawProjectiles} from "./_projectile";
+import {drawBonuses, drawShipShield} from "./_bonuses";
 import {checkMissedBonus, checkMissedProjectile, checkMissedTarget} from "./_miss";
-import {collide} from "./_collision";
-import {allImg} from "./_img";
+import {collideBonusCleanerShip, collideBonusHeartShip, collideBonusShieldShip, collideBonusTripleShip, collideTargetProjectile, collideTargetShip } from "./_collisions";
 
 export let play = true;
 let myAnimation
-
+let a = 0
 export function startGame() {
     if (play) {
         clearCanvas()
@@ -20,10 +19,14 @@ export function startGame() {
         checkMissedBonus()
         checkMissedTarget()
         checkMissedProjectile()
-        collide(allTargets, allProjectiles, allImg.target, allImg.projectile)
-        collide(allBonuses, ship, allImg.triple, allImg.ship)
-        collide(allTargets, ship, allImg.target, allImg.ship)
-        myAnimation = requestAnimationFrame(startGame);
+        collideTargetProjectile()
+        collideTargetShip()
+        collideBonusTripleShip()
+        collideBonusShieldShip()
+        collideBonusCleanerShip()
+        collideBonusHeartShip()
+        drawShipShield()
+        myAnimation = requestAnimationFrame(startGame, );
     } else {
         cancelAnimationFrame(myAnimation);
     }

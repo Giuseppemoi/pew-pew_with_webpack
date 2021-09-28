@@ -8,3 +8,9 @@ ctxDom.lineWidth = "5";
 export function clearCanvas() {
     ctxDom.clearRect(0, 0, canvasDom.width, canvasDom.height)
 }
+
+export function generatePosition(img, startingPoint) {
+    return {
+        x: Math.floor(Math.random() * (canvasDom.width - img.width)),
+        y: Math.floor(Math.random() * startingPoint) - img.height}
+}

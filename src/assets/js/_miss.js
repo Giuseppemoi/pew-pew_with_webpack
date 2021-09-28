@@ -1,13 +1,13 @@
 import {allBonuses, bonusesStartingPoint} from "./_bonuses";
-import {canvasDom} from "./_canvas";
+import {canvasDom, generatePosition} from "./_canvas";
 import {allImg} from "./_img";
-import {allTargets, generateTargetPosition, targetStartingPoint} from "./_target";
+import {allTargets, targetStartingPoint} from "./_target";
 import {allProjectiles} from "./_projectile";
 
 export function checkMissedBonus() {
     for (let bonusPositionKey in allBonuses) {
         if(allBonuses[bonusPositionKey].y > canvasDom.height) {
-            allBonuses[bonusPositionKey] = generateTargetPosition(allImg[bonusPositionKey], bonusesStartingPoint)
+            allBonuses[bonusPositionKey] = generatePosition(allImg[bonusPositionKey], bonusesStartingPoint)
         }
     }
 }
@@ -15,7 +15,7 @@ export function checkMissedBonus() {
 export function checkMissedTarget() {
     for (let TargetPositionKey in allTargets) {
         if(allTargets[TargetPositionKey].y > canvasDom.height) {
-            allTargets[TargetPositionKey] = generateTargetPosition(allImg.target, targetStartingPoint)
+            allTargets[TargetPositionKey] = generatePosition(allImg.target, targetStartingPoint)
         }
     }
 }

@@ -1,4 +1,4 @@
-import {canvasDom, ctxDom} from "./_canvas";
+import {ctxDom, generatePosition} from "./_canvas";
 import {allImg} from "./_img";
 
 export let allTargets = {}
@@ -6,14 +6,8 @@ let numberOfTarget = 10
 export let targetStartingPoint = -1000
 let targetSpeedMultiplier = 1.5
 
-export function generateTargetPosition() {
-    return {
-        x: Math.floor(Math.random() * (canvasDom.width - allImg.target.width)),
-        y: Math.floor(Math.random() * targetStartingPoint) - allImg.target.height}
-}
-
 for (let i = 0; i < numberOfTarget; i++) {
-    allTargets['target-' + i] = generateTargetPosition(allImg.target, targetStartingPoint)
+    allTargets['target-' + i] = generatePosition(allImg.target, targetStartingPoint)
 }
 
 export function drawTargets() {

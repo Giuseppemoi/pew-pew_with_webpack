@@ -14,6 +14,8 @@ document.addEventListener('mousemove', getXShip);
 // Event listener to get ship position and set projectile
 document.addEventListener("mousedown", savePositionProjectile)
 
+// Ship shield bonus timer
+
+
 // Animate the game
 requestAnimationFrame(startGame)
-
